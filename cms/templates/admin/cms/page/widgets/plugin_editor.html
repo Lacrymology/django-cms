@@ -18,6 +18,7 @@
 		{% endif %}
 	{% endif %}
 </div>
+{% if not add %}
 <script type="text/javascript">
 cms_plugin_editor_jQuery(document).ready(function($){
 var placeholder_element = $('#placeholder-{{ placeholder.pk }}');
@@ -25,3 +26,4 @@ placeholder_element.data('id', {{ placeholder.pk }});
 placeholder_element.data('name', '{{ placeholder.slot }}');
 });
 </script>
+{% endif %}
