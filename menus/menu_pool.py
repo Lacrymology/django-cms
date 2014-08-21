@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from logging import getLogger
-from cms.utils import get_cms_setting
 from cms.utils.django_load import load
 
 from django.conf import settings
@@ -151,7 +150,7 @@ class MenuPool(object):
                     logger.error("Menu %s could not be loaded." % menu_class_name, exc_info=True)
             # nodes is a list of navigation nodes (page tree in cms + others)
             final_nodes += _build_nodes_inner_for_one_menu(nodes, menu_class_name)
-        cache.set(key, final_nodes, get_cms_setting('CACHE_DURATIONS')['menus'])
+        cache.set(key, final_nodes, settings.CMS_CACHE_DURATIONS['menus'])
         # We need to have a list of the cache keys for languages and sites that
         # span several processes - so we follow the Django way and share through 
         # the database. It's still cheaper than recomputing every time!
